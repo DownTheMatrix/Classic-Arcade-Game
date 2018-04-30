@@ -1,4 +1,4 @@
-// Modal for player selection and game rules
+/* Todo: Modal for player selection and game rules */
 
 
 // Enemies our player must avoid
@@ -47,6 +47,8 @@ class Player {
         this.sprite = 'images/char-boy.png';
         this.x = x;
         this.y = y;
+        this.initialX = 200;
+        this.initialY = 425;
     }
     update() {
 
@@ -71,6 +73,13 @@ class Player {
                 this.y += 80;
                 break;
         }
+         // When player reaches the water, restarts at the starting location
+        if (this.y < 0) {
+            /* Todo: update score function */
+
+           this.x = this.initialX;
+           this.y = this.initialY;
+        };
     };
 }
 
