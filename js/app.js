@@ -3,36 +3,36 @@
 
 // Enemies our player must avoid
 class Enemy {
-    constructor (x, y, speed) {
-    // Variables applied to each of our instances go here,
-    // we've provided one for you to get started
-    this.x = x;
-    this.y = y;
-    this.initialX = x;
-    this.initialY = y;
-    this.speed = speed;
-    // The image/sprite for our enemies, this uses
-    // a helper we've provided to easily load images
-    this.sprite = 'images/enemy-bug.png';
-}
+    constructor(x, y, speed) {
+        // Variables applied to each of our instances go here,
+        // we've provided one for you to get started
+        this.x = x;
+        this.y = y;
+        this.initialX = x;
+        this.initialY = y;
+        this.speed = speed;
+        // The image/sprite for our enemies, this uses
+        // a helper we've provided to easily load images
+        this.sprite = 'images/enemy-bug.png';
+    }
 
-// Update the enemy's position, required method for game
-// Parameter: dt, a time delta between ticks
+    // Update the enemy's position, required method for game
+    // Parameter: dt, a time delta between ticks
     update(dt) {
-    // You should multiply any movement by the dt parameter
-    // which will ensure the game runs at the same speed for
-    // all computers.
+        // You should multiply any movement by the dt parameter
+        // which will ensure the game runs at the same speed for
+        // all computers.
         this.x += this.speed * dt;
-}
+    }
 
 
-// Reset enemies location onto the canvas
+    // Reset enemies location onto the canvas
     reset() {
 
     }
-// Check for collision with the player
+    // Check for collision with the player
 
-// Draw the enemy on the screen, required method for game
+    // Draw the enemy on the screen, required method for game
     render() {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     }
@@ -48,26 +48,32 @@ class Player {
         this.x = x;
         this.y = y;
     }
-        update() {
+    update() {
 
-        };
+    };
 
-        render() {
-            ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-        };
+    render() {
+        ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    };
 
-        handleInput(keyPressed) {
-            if (keyPressed === 'left') {
+    handleInput(keyPressed) {
+        switch (keyPressed) {
+            case 'left':
                 this.x -= 100;
-            } else if (keyPressed === 'right') {
+                break;
+            case 'right':
                 this.x += 100;
-            } else if (keyPressed === 'up') {
+                break;
+            case 'up':
                 this.y -= 80;
-            } else if (keyPressed === 'down') {
+                break;
+            case 'down':
                 this.y += 80;
-            }
-        };
+                break;
+        }
+    };
 }
+
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
@@ -77,7 +83,7 @@ const player = new Player(200, 425);
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
-document.addEventListener('keyup', function(e) {
+document.addEventListener('keyup', function (e) {
     var allowedKeys = {
         37: 'left',
         38: 'up',
