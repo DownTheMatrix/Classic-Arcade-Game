@@ -1,3 +1,6 @@
+// Modal for player selection and game rules
+
+
 // Enemies our player must avoid
 class Enemy {
     constructor (x, y, speed) {
@@ -5,6 +8,8 @@ class Enemy {
     // we've provided one for you to get started
     this.x = x;
     this.y = y;
+    this.initialX = x;
+    this.initialY = y;
     this.speed = speed;
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
@@ -22,7 +27,9 @@ class Enemy {
 
 
 // Reset enemies location onto the canvas
+    reset() {
 
+    }
 // Check for collision with the player
 
 // Draw the enemy on the screen, required method for game
@@ -38,18 +45,35 @@ class Player {
     constructor(x, y) {
         this.name = name;
         this.sprite = 'images/char-boy.png';
-        this.update = function update() {};
-        this.render = function render() {};
-        this.handleInput = function handleInput() {};
+        this.x = x;
+        this.y = y;
     }
+        update() {
+
+        };
+
+        render() {
+            ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+        };
+
+        handleInput(keyPressed) {
+            if (keyPressed === 'left') {
+                this.x -= 100;
+            } else if (keyPressed === 'right') {
+                this.x += 100;
+            } else if (keyPressed === 'up') {
+                this.y -= 80;
+            } else if (keyPressed === 'down') {
+                this.y += 80;
+            }
+        };
 }
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 const allEnemies = [];
 // Place the player object in a variable called player
-const player = new Player();
-
+const player = new Player(200, 425);
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
@@ -60,7 +84,6 @@ document.addEventListener('keyup', function(e) {
         39: 'right',
         40: 'down'
     };
-
     player.handleInput(allowedKeys[e.keyCode]);
 });
 
@@ -71,7 +94,7 @@ function keyPressed() {
     } else if (keycode === 40) {
         player.move(0, 1);
     } else if (keycode === 39) {
-        player.move(0, 1);
+        player.move(1, 0);
     } else if (keycode === 37) {
         player.move(-1 , 0);
     }
