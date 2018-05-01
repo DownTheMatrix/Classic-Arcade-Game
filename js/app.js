@@ -41,7 +41,6 @@ class Enemy {
 // a handleInput() method.
 class Player {
     constructor(x, y) {
-        this.name = name;
         this.sprite = 'images/char-boy.png';
         this.x = x;
         this.y = y;
@@ -80,12 +79,24 @@ class Player {
                 this.y += 80;
                 break;
         }
+
          // When player reaches the water, restarts at the starting location
         if (this.y < 0) {
             /* Todo: update score function */
 
             this.reset();
         };
+
+        // Walls collision
+        if (this.x > 400) {
+            this.x = 400;
+        }
+        if (this.x < 0) {
+            this.x = 0;
+        }
+        if (this.y > 425) {
+            this.y = 425;
+        }
     };
 }
 
@@ -98,6 +109,8 @@ const allEnemies = [];
     allEnemies.push(new Enemy(0, 140));
     allEnemies.push(new Enemy(0, 230));
 })();
+
+// Walls collision detection function
 
 
 
