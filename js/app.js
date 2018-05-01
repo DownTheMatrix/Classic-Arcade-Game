@@ -8,8 +8,6 @@ class Enemy {
         // we've provided one for you to get started
         this.x = x;
         this.y = y;
-        this.initialX = x;
-        this.initialY = y;
         this.speed = speed;
         // The image/sprite for our enemies, this uses
         // a helper we've provided to easily load images
@@ -50,8 +48,13 @@ class Player {
         this.initialX = 200;
         this.initialY = 425;
     }
-    update() {
+    update(dt) {
 
+    };
+
+    reset() {
+        this.x = this.initialX;
+        this.y = this.initialY;
     };
 
     render() {
@@ -61,15 +64,19 @@ class Player {
     handleInput(keyPressed) {
         switch (keyPressed) {
             case 'left':
+            case 'altLeft':
                 this.x -= 100;
                 break;
             case 'right':
+            case 'altRight':
                 this.x += 100;
                 break;
             case 'up':
+            case 'altUp':
                 this.y -= 80;
                 break;
             case 'down':
+            case 'altDown':
                 this.y += 80;
                 break;
         }
@@ -77,8 +84,7 @@ class Player {
         if (this.y < 0) {
             /* Todo: update score function */
 
-           this.x = this.initialX;
-           this.y = this.initialY;
+            this.reset();
         };
     };
 }
@@ -87,6 +93,14 @@ class Player {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 const allEnemies = [];
+(function initGame() {
+    allEnemies.push(new Enemy(0, 50));
+    allEnemies.push(new Enemy(0, 140));
+    allEnemies.push(new Enemy(0, 230));
+})();
+
+
+
 // Place the player object in a variable called player
 const player = new Player(200, 425);
 
@@ -97,21 +111,11 @@ document.addEventListener('keyup', function (e) {
         37: 'left',
         38: 'up',
         39: 'right',
-        40: 'down'
+        40: 'down',
+        87: 'altUp',
+        65: 'altLeft',
+        68: 'altRight',
+        83: 'altDown'
     };
     player.handleInput(allowedKeys[e.keyCode]);
 });
-
-/* 
-function keyPressed() {
-    if (keycode === 38) {
-        player.move(0, -1);
-    } else if (keycode === 40) {
-        player.move(0, 1);
-    } else if (keycode === 39) {
-        player.move(1, 0);
-    } else if (keycode === 37) {
-        player.move(-1 , 0);
-    }
-}
-*/
