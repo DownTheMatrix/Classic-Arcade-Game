@@ -29,7 +29,7 @@ class Enemy {
 
     // Check collision with player (src: https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection)
     checkCollision() {
-        if (player.x < this.x &&
+        if (player.x < this.x + 60 &&
             player.x + 37 > this.x &&
             player.y < this.y + 25 &&
             30 + player.y > this.y) {
