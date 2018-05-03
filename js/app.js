@@ -25,25 +25,20 @@ class Enemy {
             this.x = -150;
             this.speed = 100 + Math.floor(Math.random() * 368);
         }
-    }
-
-    // Check collision with player (src: https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection)
-    checkCollision() {
-        if (player.x <= this.x + 50 &&
-            this.x <= player.x + 20 &&
-            player.y <= this.y + 20 &&
-            this.y <= player.y + 20) {
-            // when colliding with player, 'bump' them
-            alert("collision!");
-        }
-    
-    }
+        // Teleport player after collision with foe detected (src: https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection)
+        if (player.x < this.x + 80 &&
+            player.x + 80 > this.x &&
+            player.y < this.y + 60 &&
+            60 + player.y > this.y) {
+            player.reset();
+        };
+    };
 
     // Draw the enemy on the screen, required method for game
     render() {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+        }
     }
-}
 
 // Now write your own player class
 // This class requires an update(), render() and
@@ -66,9 +61,9 @@ class Player {
             this.y <= enemy.y + 20) {
             // when colliding with player, 'bump' them
             alert("collision!");
-            }
         }
-    
+    }
+
     update() {
         if (this.x > 400) {
             this.x = 400;
@@ -110,10 +105,10 @@ class Player {
                 break;
         }
 
-         // When player reaches the water, restarts at the starting location
+        // When player reaches the water, restarts at the starting location
         if (this.y < 0) {
             /* Todo: update score function */
-           this.score++;
+            this.score++;
             this.reset();
         };
     };
@@ -125,7 +120,7 @@ const allEnemies = [];
 const enemyLocation = [20, 60, 140, 220];
 const randomLoc = 100 + Math.floor(Math.random() * 15);
 
-enemyLocation.forEach(function(y){
+enemyLocation.forEach(function (y) {
     const enemy = new Enemy(randomLoc, y, this.speed);
     allEnemies.push(enemy);
 });
