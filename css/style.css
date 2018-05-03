@@ -1,3 +1,11 @@
 body {
     text-align: center;
 }
+
+/* Media Queries */
+@media screen and (max-width: 767px) {
+	canvas{
+		max-width: 360px;
+		min-height: 450px;
+	}
+}
