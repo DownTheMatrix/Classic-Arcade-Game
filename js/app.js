@@ -1,4 +1,14 @@
 /* Todo: Modal for player selection and game rules */
+document.addEventListener('DOMContentLoaded',  showModal);
+
+function showModal() {
+    const modal = document.querySelector('.md-modal');
+    modal.classList.add('md-show');
+}
+
+function selectHero() {
+    const heroBtn = document.querySelector('.md-select');
+}
 
 // Enemies our player must avoid
 class Enemy {
