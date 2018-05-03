@@ -29,14 +29,15 @@ class Enemy {
 
     // Check collision with player (src: https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection)
     checkCollision() {
-        if (player.x < this.x + 60 &&
-            player.x + 37 > this.x &&
-            player.y < this.y + 25 &&
-            30 + player.y > this.y) {
-            player.x = initialX;
-            player.y = initialY;
+        if (player.x <= this.x + 50 &&
+            this.x <= player.x + 20 &&
+            player.y <= this.y + 20 &&
+            this.y <= player.y + 20) {
+            // when colliding with player, 'bump' them
+            alert("collision!");
         }
-    } 
+    
+    }
 
     // Draw the enemy on the screen, required method for game
     render() {
@@ -57,6 +58,16 @@ class Player {
         this.score = 0;
         this.lives = 3;
     }
+
+    checkCollision() {
+        if (enemy.x <= this.x + 50 &&
+            this.x <= enemy.x + 20 &&
+            enemy.y <= this.y + 20 &&
+            this.y <= enemy.y + 20) {
+            // when colliding with player, 'bump' them
+            alert("collision!");
+            }
+        }
     
     update() {
         if (this.x > 400) {
@@ -111,8 +122,8 @@ class Player {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 const allEnemies = [];
-const enemyLocation = [60, 140, 220];
-const randomLoc = Math.floor(Math.random() * 15);
+const enemyLocation = [20, 60, 140, 220];
+const randomLoc = 100 + Math.floor(Math.random() * 15);
 
 enemyLocation.forEach(function(y){
     const enemy = new Enemy(randomLoc, y, this.speed);
