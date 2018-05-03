@@ -1,6 +1,5 @@
 /* Todo: Modal for player selection and game rules */
 
-
 // Enemies our player must avoid
 class Enemy {
     constructor(x, y, speed) {
@@ -25,7 +24,7 @@ class Enemy {
             this.x = -150;
             this.speed = 100 + Math.floor(Math.random() * 368);
         }
-        // Teleport player after collision with foe detected (src: https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection)
+        // Check for collision and teleport the character back to the starting position (src: https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection)
         if (player.x < this.x + 80 &&
             player.x + 80 > this.x &&
             player.y < this.y + 60 &&
@@ -43,27 +42,17 @@ class Enemy {
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
-class Player {
+class Player extends Enemy {
     constructor(x, y) {
+        super(x, y);
         this.sprite = 'images/char-boy.png';
-        this.x = x;
-        this.y = y;
         this.initialX = 200;
         this.initialY = 425;
         this.score = 0;
         this.lives = 3;
     }
 
-    checkCollision() {
-        if (enemy.x <= this.x + 50 &&
-            this.x <= enemy.x + 20 &&
-            enemy.y <= this.y + 20 &&
-            this.y <= enemy.y + 20) {
-            // when colliding with player, 'bump' them
-            alert("collision!");
-        }
-    }
-
+    // Prevent character from going off canvas
     update() {
         if (this.x > 400) {
             this.x = 400;
@@ -76,11 +65,13 @@ class Player {
         }
     };
 
+    // Reset to starting location
     reset() {
         this.x = this.initialX;
         this.y = this.initialY;
     };
 
+    // Draw elements on canvas
     render() {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     };
@@ -120,7 +111,7 @@ const allEnemies = [];
 const enemyLocation = [20, 60, 140, 220];
 const randomLoc = 100 + Math.floor(Math.random() * 15);
 
-enemyLocation.forEach(function (y) {
+enemyLocation.forEach(function(y) {
     const enemy = new Enemy(randomLoc, y, this.speed);
     allEnemies.push(enemy);
 });
@@ -131,7 +122,7 @@ const player = new Player(200, 425);
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
 document.addEventListener('keyup', function (e) {
-    var allowedKeys = {
+    const allowedKeys = {
         37: 'left',
         38: 'up',
         39: 'right',
