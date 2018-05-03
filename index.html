@@ -1,13 +1,46 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <title>Effective JavaScript: Frogger</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
+
+    <!-- Modal (char selection and game rules) -->
+    <div class="md-modal md-effect-7" id="modal-7">
+			<div class="md-content">
+				<h3>Welcome to Frogger 2.0</h3>
+				<div class="md-story">
+                    <p>Help your hero to escape this bugged game for good! Remember not to hit the darned insects or you will lose 1 life. Good luck!</p>
+                    <div class="hero-selection">
+                        <div class="hero-img">
+                            <img src="images/char-cat-girl.png" alt="">
+                            <button class="md-select">Select Kitty</button>
+                        </div>
+                        <div class="hero-img">
+                            <img src="images/char-pink-girl.png" alt="">
+                            <button class="md-select">Select Rose</button>
+                        </div>
+                        <div class="hero-img">
+                            <img src="images/char-horn-girl.png" alt="">
+                            <button class="md-select">Select Lilith</button>
+                        </div>
+                        <div class="hero-img">
+                            <img src="images/char-princess-girl.png" alt="">
+                            <button class="md-select">Select Daisy</button>
+                        </div>
+                    </div>
+				</div>
+			</div>
+		</div>
+
+
     <script src="js/resources.js"></script>
     <script src="js/app.js"></script>
     <script src="js/engine.js"></script>
 </body>
+
 </html>
