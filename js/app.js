@@ -171,11 +171,11 @@ class Player extends Enemy {
                 break;
             case 'up':
             case 'altUp':
-                this.y -= 80;
+                this.y -= 100;
                 break;
             case 'down':
             case 'altDown':
-                this.y += 80;
+                this.y += 100;
                 break;
         };
 
