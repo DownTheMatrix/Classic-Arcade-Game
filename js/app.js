@@ -131,7 +131,7 @@ class Player extends Enemy {
 
     // Display victory message when the player collects enough points
     checkVictory() {
-        if (this.score === 10) {
+        if (this.score === 100) {
             showWinningModal();
         }
     }
