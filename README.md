@@ -20,6 +20,7 @@ In case you run into some issues, and cannot display the game correctly, try run
 + Launch a local server with Python (open the console and type):
 
   `python -m http.server` (for Python 3x);
+  
   `python -m SimpleHTTPServer` (for Python 2x);
 
 Then move to the default address `http://localhost:8000`.
