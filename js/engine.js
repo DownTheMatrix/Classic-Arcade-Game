@@ -187,7 +187,21 @@ var Engine = (function(global) {
         'images/Key.png',
         'images/Rock.png',
         'images/Star.png',
-        'images/Selector.png'
+        'images/Selector.png',
+        'images/wood-block.png',
+        'images/dirt-block.png',
+        'images/chest-closed.png',
+        'images/chest-lid.png',
+        'images/chest-open.png',
+        'images/plain-block.png',
+        'images/stone-block.png',
+        'images/stone-block-tall.png',
+        'images/wall-block.png',
+        'images/wall-block-tall.png',
+        'images/tree-tall.png',
+        'images/tree-short.png',
+        'images/tree-ugly.png',
+        'images/speech-bubble.png'
     ]);
     Resources.onReady(init);
 
