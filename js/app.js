@@ -2,6 +2,7 @@
 document.addEventListener('DOMContentLoaded', showModal);
 
 const modal = document.querySelector('.md-modal');
+const winningModal = document.querySelector('#winning-modal');
 
 // Initial modal
 function showModal() {
@@ -12,12 +13,16 @@ function showModal() {
 function restartGame() {
     player.lives = 3;
     player.score = 0;
-    modal.classList.remove('md-show');
+    winningModal.classList.remove('md-show');
+    showModal();
 }
+
+// Clicking on the restart button shall reset the game
+const restartBtn = document.querySelector('#restartBtn');
+restartBtn.addEventListener('click', restartGame);
 
 // Winning modal
 function showWinningModal() {
-    const winningModal = document.querySelector('#winning-modal');
     winningModal.classList.add('md-show');
 }
 
@@ -93,6 +98,7 @@ class Player extends Enemy {
         this.initialY = 425;
         this.score = 0;
         this.lives = 3;
+        this.won = false;
     }
 
     // Prevent character from going off canvas
