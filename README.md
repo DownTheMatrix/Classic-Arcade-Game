@@ -10,6 +10,8 @@ I will add more info and update this file as soon as I start working on it.
 This is a project for my Udacity/Google FEND Scholarship Nanodegree Program. The arts and assets were provided by Udacity. 
 The student task was to work on the app.js file and use OOP concepts and features to initialize the game.
 
+![Game Screen](https://github.com/DownTheMatrix/Classic-Arcade-Game/blob/master/Screenshot.png?raw=true)
+
 ### How To Run The Game
 + Clone the repository to your local machine or download the project as a .zip file
 + Don't alter the folder/files disposition
