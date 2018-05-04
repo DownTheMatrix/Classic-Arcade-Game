@@ -46,18 +46,13 @@ for (let i = 0; i < btnLen; i++) {
 // Enemies our player must avoid
 class Enemy {
     constructor(x, y, speed) {
-        // Variables applied to each of our instances go here,
-        // we've provided one for you to get started
         this.x = x;
         this.y = y;
         this.speed = this.speed = 100 + Math.floor(Math.random() * 512);
-        // The image/sprite for our enemies, this uses
-        // a helper we've provided to easily load images
         this.sprite = 'images/enemy-bug.png';
     }
 
-    // Update the enemy's position, required method for game
-    // Parameter: dt, a time delta between ticks
+    // Update enemy position
     update(dt) {
         // You should multiply any movement by the dt parameter
         // which will ensure the game runs at the same speed for
@@ -69,11 +64,14 @@ class Enemy {
         }
 
         // Check for collision and teleport the character back to the starting position (src: https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection)
+        this.checkCollision();
+    };
+
+    checkCollision() {
         if (player.x < this.x + 60 &&
             player.x + 60 > this.x &&
             player.y < this.y + 50 &&
             50 + player.y > this.y) {
-
             // Decrease lives left upon collision
             player.lives -= 1;
             player.reset();
@@ -86,9 +84,7 @@ class Enemy {
     }
 }
 
-// Now write your own player class
-// This class requires an update(), render() and
-// a handleInput() method.
+// Player class
 class Player extends Enemy {
     constructor(x, y) {
         super(x, y);
@@ -156,6 +152,7 @@ class Player extends Enemy {
         ctx.fillText("Lives: " + this.lives, 410, 580);
     };
 
+    // Added alternative keys
     handleInput(keyPressed) {
         switch (keyPressed) {
             case 'left':
@@ -176,7 +173,7 @@ class Player extends Enemy {
                 break;
         };
 
-        // When player reaches the water, restarts at the starting location
+        // When the player reaches the water, restarts at the starting location
         if (this.y < 0) {
             this.increaseScore();
             this.reset();
@@ -188,12 +185,16 @@ class Player extends Enemy {
 class BonusObject extends Enemy {
     constructor(x, y) {
         super(x, y);
+        this.x = x;
+        this.y = y;
+        this.sprite = 'images/Gem Blue.png';
+    }
 
+    render() {
+        ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     }
 }
 
-// Now instantiate your objects.
-// Place all enemy objects in an array called allEnemies
 // Enemy instantiation
 const allEnemies = [];
 const enemyLocation = [20, 60, 140, 220];
@@ -204,15 +205,14 @@ enemyLocation.forEach(function (y) {
     allEnemies.push(enemy);
 });
 
-// Place the player object in a variable called player
 // Player instantiation
 const player = new Player(200, 425);
 
-// Bonus object instantiation
+/* Todo: add bonus, collectible objects */
 
 
-// This listens for key presses and sends the keys to your
-// Player.handleInput() method. You don't need to modify this.
+
+// Listen for keypress and allow character movement
 document.addEventListener('keyup', function (e) {
     const allowedKeys = {
         37: 'left',
