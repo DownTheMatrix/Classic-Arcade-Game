@@ -1,13 +1,46 @@
-/* Todo: Modal for player selection and game rules */
-document.addEventListener('DOMContentLoaded',  showModal);
+// Show modal when content is loaded
+document.addEventListener('DOMContentLoaded', showModal);
 
+const modal = document.querySelector('.md-modal');
+
+// Initial modal
 function showModal() {
-    const modal = document.querySelector('.md-modal');
     modal.classList.add('md-show');
 }
 
-function selectHero() {
-    const heroBtn = document.querySelector('.md-select');
+// Game over & restart game modal
+function restartGame() {
+    player.lives = 3;
+    player.score = 0;
+    modal.classList.remove('md-show');
+}
+
+// Winning modal
+function showWinningModal() {
+    const winningModal = document.querySelector('#winning-modal');
+    winningModal.classList.add('md-show');
+}
+
+// Allow hero selection
+const heroBtn = document.querySelectorAll('.md-select');
+const btnLen = heroBtn.length;
+
+for (let i = 0; i < btnLen; i++) {
+    heroBtn[i].addEventListener('click', function () {
+        if (heroBtn[i].id === 'kitty') {
+            player.sprite = 'images/char-cat-girl.png';
+            modal.classList.remove('md-show');
+        } else if (heroBtn[i].id === 'rose') {
+            player.sprite = 'images/char-pink-girl.png';
+            modal.classList.remove('md-show');
+        } else if (heroBtn[i].id === 'lilith') {
+            player.sprite = 'images/char-horn-girl.png';
+            modal.classList.remove('md-show');
+        } else {
+            player.sprite = 'images/char-princess-girl.png';
+            modal.classList.remove('md-show');
+        }
+    })
 }
 
 // Enemies our player must avoid
@@ -34,11 +67,15 @@ class Enemy {
             this.x = -150;
             this.speed = 100 + Math.floor(Math.random() * 368);
         }
+
         // Check for collision and teleport the character back to the starting position (src: https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection)
-        if (player.x < this.x + 80 &&
-            player.x + 80 > this.x &&
-            player.y < this.y + 60 &&
-            60 + player.y > this.y) {
+        if (player.x < this.x + 60 &&
+            player.x + 60 > this.x &&
+            player.y < this.y + 50 &&
+            50 + player.y > this.y) {
+
+            // Decrease lives left upon collision
+            player.lives -= 1;
             player.reset();
         };
     };
@@ -46,8 +83,8 @@ class Enemy {
     // Draw the enemy on the screen, required method for game
     render() {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-        }
     }
+}
 
 // Now write your own player class
 // This class requires an update(), render() and
@@ -73,7 +110,29 @@ class Player extends Enemy {
         if (this.y > 425) {
             this.y = 425;
         }
+        this.gameOver();
+        this.checkVictory();
     };
+
+    // Increase the score when the player reaches the water
+    increaseScore() {
+        this.score += 10;
+    }
+
+    // Trigger the starting modal when ran out of lives
+    gameOver() {
+        if (this.lives === 0) {
+            restartGame();
+            showModal();
+        }
+    }
+
+    // Display victory message when the player collects enough points
+    checkVictory() {
+        if (this.score === 10) {
+            showWinningModal();
+        }
+    }
 
     // Reset to starting location
     reset() {
@@ -83,7 +142,18 @@ class Player extends Enemy {
 
     // Draw elements on canvas
     render() {
+
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+
+        // Draw score
+        ctx.font = "italic 22px Open Sans";
+        ctx.fillStyle = 'orange';
+        ctx.fillText("Score: " + this.score, 5, 580);
+
+        // Draw lives left
+        ctx.font = "italic 22px Open Sans";
+        ctx.fillStyle = 'red';
+        ctx.fillText("Lives: " + this.lives, 410, 580);
     };
 
     handleInput(keyPressed) {
@@ -104,30 +174,42 @@ class Player extends Enemy {
             case 'altDown':
                 this.y += 80;
                 break;
-        }
+        };
 
         // When player reaches the water, restarts at the starting location
         if (this.y < 0) {
-            /* Todo: update score function */
-            this.score++;
+            this.increaseScore();
             this.reset();
         };
     };
 }
 
+// Create bonus objects class
+class BonusObject extends Enemy {
+    constructor(x, y) {
+        super(x, y);
+
+    }
+}
+
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
+// Enemy instantiation
 const allEnemies = [];
 const enemyLocation = [20, 60, 140, 220];
 const randomLoc = 100 + Math.floor(Math.random() * 15);
 
-enemyLocation.forEach(function(y) {
+enemyLocation.forEach(function (y) {
     const enemy = new Enemy(randomLoc, y, this.speed);
     allEnemies.push(enemy);
 });
 
 // Place the player object in a variable called player
+// Player instantiation
 const player = new Player(200, 425);
+
+// Bonus object instantiation
+
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
