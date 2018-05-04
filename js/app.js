@@ -7,6 +7,7 @@ const winningModal = document.querySelector('#winning-modal');
 // Initial modal
 function showModal() {
     modal.classList.add('md-show');
+    heroSelection();
 }
 
 // Game over & restart game modal
@@ -27,25 +28,27 @@ function showWinningModal() {
 }
 
 // Allow hero selection
-const heroBtn = document.querySelectorAll('.md-select');
-const btnLen = heroBtn.length;
+function heroSelection() {
+    const heroBtn = document.querySelectorAll('.md-select');
+    const btnLen = heroBtn.length;
 
-for (let i = 0; i < btnLen; i++) {
-    heroBtn[i].addEventListener('click', function () {
-        if (heroBtn[i].id === 'kitty') {
-            player.sprite = 'images/char-cat-girl.png';
-            modal.classList.remove('md-show');
-        } else if (heroBtn[i].id === 'rose') {
-            player.sprite = 'images/char-pink-girl.png';
-            modal.classList.remove('md-show');
-        } else if (heroBtn[i].id === 'lilith') {
-            player.sprite = 'images/char-horn-girl.png';
-            modal.classList.remove('md-show');
-        } else {
-            player.sprite = 'images/char-princess-girl.png';
-            modal.classList.remove('md-show');
-        }
-    })
+    for (let i = 0; i < btnLen; i++) {
+        heroBtn[i].addEventListener('click', function () {
+            if (heroBtn[i].id === 'kitty') {
+                player.sprite = 'images/char-cat-girl.png';
+                modal.classList.remove('md-show');
+            } else if (heroBtn[i].id === 'rose') {
+                player.sprite = 'images/char-pink-girl.png';
+                modal.classList.remove('md-show');
+            } else if (heroBtn[i].id === 'lilith') {
+                player.sprite = 'images/char-horn-girl.png';
+                modal.classList.remove('md-show');
+            } else {
+                player.sprite = 'images/char-princess-girl.png';
+                modal.classList.remove('md-show');
+            }
+        })
+    }
 }
 
 // Enemies our player must avoid
@@ -188,7 +191,7 @@ class Player extends Enemy {
 }
 
 // Create bonus objects class
-class BonusObject extends Enemy {
+/* class BonusObject extends Enemy {
     constructor(x, y) {
         super(x, y);
         this.x = x;
@@ -199,7 +202,7 @@ class BonusObject extends Enemy {
     render() {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     }
-}
+} */
 
 // Enemy instantiation
 const allEnemies = [];
