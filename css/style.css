@@ -139,6 +139,14 @@ body {
 	opacity: 1;
 }
 
+/* Restart button */
+
+#restartBtn {
+	padding: 1.5em;
+	border-radius: 8%;
+	cursor: pointer;
+}
+
 /* Media Queries */
 
 @media screen and (max-width: 767px) {
