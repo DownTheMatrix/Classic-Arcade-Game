@@ -34,11 +34,14 @@ Then move to the default address `http://localhost:8000`.
 As above, the default address is `http://localhost:8000`.
 
 ### Game Rules
-The user can select one hero, and must lead him/her to the water area without colliding with the enemies which are randomly generated and run across the screen. The player starts with 3 lives. If the player hits the enemies, the hero will lose 1 life and will be transported back to the starting point. 
+The user can select one hero, and must lead him/her to the water area without colliding with the enemies which are randomly generated and run across the screen. The player starts with 3 lives. If the player hits the enemies, the hero will lose 1 life and will be transported back to the starting point. The player wins when collects 100 points.
 When the hero runs out of lives, the game is lost and the initial screen will pop up. Here, the user can select another hero and try again.
 
 If the player reaches the water safely, 10 points will be added to the total score. 
 Once the hero collects 100 points, the game is won and another screen will appear where the user can decide to restart the game. 
+
+#### Keyboard Commands
+In order to move the character around the screen, you can use the arrow keys (UP LEFT DOWN RIGHT), or, alternatively, the combination of W A S D. 
 
 #### Code Dependencies
 The project is realized using Vanilla JS (no frameworks). 
