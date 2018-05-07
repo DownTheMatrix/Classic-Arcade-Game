@@ -33,6 +33,8 @@ Then move to the default address `http://localhost:8000`.
 
 As above, the default address is `http://localhost:8000`.
 
+Alternatively, you can try it out here: [Live Demo](https://downthematrix.github.io/Classic-Arcade-Game/)
+
 ### Game Rules
 The user can select one hero, and must lead him/her to the water area without colliding with the enemies which are randomly generated and run across the screen. The player starts with 3 lives. If the player hits the enemies, the hero will lose 1 life and will be transported back to the starting point. The player wins when collects 100 points.
 When the hero runs out of lives, the game is lost and the initial screen will pop up. Here, the user can select another hero and try again.
