@@ -56,7 +56,7 @@ class Enemy {
     constructor(x, y, speed) {
         this.x = x;
         this.y = y;
-        this.speed = this.speed = 100 + Math.floor(Math.random() * 512);
+        this.speed = 100 + Math.floor(Math.random() * 512);
         this.sprite = 'images/enemy-bug.png';
     }
 
