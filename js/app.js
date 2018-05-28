@@ -209,7 +209,7 @@ const allEnemies = [];
 const enemyLocation = [20, 60, 140, 220];
 const randomLoc = 100 + Math.floor(Math.random() * 15);
 
-enemyLocation.forEach(function (y) {
+enemyLocation.forEach(function(y) {
     const enemy = new Enemy(randomLoc, y, this.speed);
     allEnemies.push(enemy);
 });
@@ -222,7 +222,7 @@ const player = new Player(200, 425);
 
 
 // Listen for keypress and allow character movement
-document.addEventListener('keyup', function (e) {
+document.addEventListener('keyup', function(e) {
     const allowedKeys = {
         37: 'left',
         38: 'up',
