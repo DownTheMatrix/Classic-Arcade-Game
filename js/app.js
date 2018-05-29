@@ -33,7 +33,7 @@ function heroSelection() {
     const btnLen = heroBtn.length;
 
     for (let i = 0; i < btnLen; i++) {
-        heroBtn[i].addEventListener('click', function () {
+        heroBtn[i].addEventListener('click', function() {
             if (heroBtn[i].id === 'kitty') {
                 player.sprite = 'images/char-cat-girl.png';
                 modal.classList.remove('md-show');
@@ -153,7 +153,7 @@ class Player extends Enemy {
         // Draw score
         ctx.font = "italic 22px Open Sans";
         ctx.fillStyle = 'orange';
-        ctx.fillText("Score: " + this.score, 5, 580);
+        ctx.fillText("Score: " + this.score + " /100", 5, 580);
 
         // Draw lives left
         ctx.font = "italic 22px Open Sans";
