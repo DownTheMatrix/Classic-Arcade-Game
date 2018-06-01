@@ -1,3 +1,9 @@
+/* TODOS 
+1. Implement collectibles;
+2. Rewrite the code to comply with ES6 standards;
+3. Define game states
+*/
+
 // Show modal when content is loaded
 document.addEventListener('DOMContentLoaded', showModal);
 
@@ -33,7 +39,7 @@ function heroSelection() {
     const btnLen = heroBtn.length;
 
     for (let i = 0; i < btnLen; i++) {
-        heroBtn[i].addEventListener('click', function() {
+        heroBtn[i].addEventListener('click', function () {
             if (heroBtn[i].id === 'kitty') {
                 player.sprite = 'images/char-cat-girl.png';
                 modal.classList.remove('md-show');
@@ -51,7 +57,7 @@ function heroSelection() {
     }
 }
 
-// Enemies our player must avoid
+/* Enemy Class */
 class Enemy {
     constructor(x, y, speed) {
         this.x = x;
@@ -92,7 +98,7 @@ class Enemy {
     }
 }
 
-// Player class
+/* Player class */
 class Player extends Enemy {
     constructor(x, y) {
         super(x, y);
@@ -101,7 +107,6 @@ class Player extends Enemy {
         this.initialY = 425;
         this.score = 0;
         this.lives = 3;
-        this.won = false;
     }
 
     // Prevent character from going off canvas
@@ -132,7 +137,7 @@ class Player extends Enemy {
         }
     }
 
-    // Display victory message when the player collects enough points
+    // Display victory modal when the player collects enough points
     checkVictory() {
         if (this.score === 100) {
             showWinningModal();
@@ -147,14 +152,11 @@ class Player extends Enemy {
 
     // Draw elements on canvas
     render() {
-
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-
         // Draw score
         ctx.font = "italic 22px Open Sans";
         ctx.fillStyle = 'orange';
         ctx.fillText("Score: " + this.score + " /100", 5, 580);
-
         // Draw lives left
         ctx.font = "italic 22px Open Sans";
         ctx.fillStyle = 'red';
@@ -190,7 +192,7 @@ class Player extends Enemy {
     };
 }
 
-// Create bonus objects class
+/* Bonus/Collectible Objects */
 /* class BonusObject extends Enemy {
     constructor(x, y) {
         super(x, y);
@@ -202,6 +204,8 @@ class Player extends Enemy {
     render() {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     }
+
+    update() {}
 } */
 
 // Enemy instantiation
@@ -217,12 +221,11 @@ enemyLocation.forEach(function(y) {
 // Player instantiation
 const player = new Player(200, 425);
 
-/* Todo: add bonus, collectible objects */
-
+// Bonus Objects instantiation
 
 
 // Listen for keypress and allow character movement
-document.addEventListener('keyup', function(e) {
+document.addEventListener('keyup', function (e) {
     const allowedKeys = {
         37: 'left',
         38: 'up',
