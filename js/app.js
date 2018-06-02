@@ -1,7 +1,8 @@
 /* TODOS 
 1. Implement collectibles;
 2. Rewrite the code to comply with ES6 standards;
-3. Define game states
+3. Define game states;
+4. Add success images according to the no. of lives left
 */
 
 // Show modal when content is loaded
@@ -39,7 +40,7 @@ function heroSelection() {
     const btnLen = heroBtn.length;
 
     for (let i = 0; i < btnLen; i++) {
-        heroBtn[i].addEventListener('click', function () {
+        heroBtn[i].addEventListener('click', function() {
             if (heroBtn[i].id === 'kitty') {
                 player.sprite = 'images/char-cat-girl.png';
                 modal.classList.remove('md-show');
