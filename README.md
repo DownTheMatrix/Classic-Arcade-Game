@@ -15,17 +15,17 @@ In case you run into some issues, and cannot display the game correctly, try run
 
 + Launch a local server with Python (open the console and type):
 
-  `python -m http.server` (for Python 3x);
+  `python -m http.server` (for Python 3x)
   
-  `python -m SimpleHTTPServer` (for Python 2x);
+  `python -m SimpleHTTPServer` (for Python 2x)
 
-Then move to the default address `http://localhost:8000`.
+Then move to the default address `http://localhost:8000`
 
 + Launch a local server with Node (open the node.js console and type):
 
   `http-server`
 
-As above, the default address is `http://localhost:8000`.
+As above, the default address is `http://localhost:8000`
 
 Alternatively, you can try it out here: [Live Demo](https://downthematrix.github.io/Classic-Arcade-Game/)
 
