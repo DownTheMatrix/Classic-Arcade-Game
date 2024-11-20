@@ -1,65 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Frogger 2.0</title>
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-</head>
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
 
-<body>
-
+  <body>
     <!-- Modal (char selection and game rules) -->
     <div class="md-modal md-effect-7" id="modal-7">
-        <div class="md-content">
-            <h3>Welcome to Frogger 2.0</h3>
-            <div class="md-story">
-                <p>Help your hero to escape this bugged game for good! Collect 100 points to win. Remember not to hit the bugs or you will lose
-                    1 life. When you run out of lives, you lose. Simple as that. Good luck!</p>
-                <h3 id="hero-heading">Choose your Hero</h3>
-                <div class="hero-selection">
-                    <div class="hero-img">
-                        <img src="images/char-cat-girl.png" alt="character-kitty">
-                        <button class="md-select" id="kitty">Select Kitty</button>
-                    </div>
-                    <div class="hero-img">
-                        <img src="images/char-pink-girl.png" alt="character-rose">
-                        <button class="md-select" id="rose">Select Rose</button> 
-                    </div>
-                    <div class="hero-img">
-                        <img src="images/char-horn-girl.png" alt="character-lilith">
-                        <button class="md-select" id="lilith">Select Lilith</button>
-                    </div>
-                    <div class="hero-img">
-                        <img src="images/char-princess-girl.png" alt="character-daisy">
-                        <button class="md-select" id="daisy">Select Daisy</button>
-                    </div>
-                </div>
+      <div class="md-content">
+        <h3>Welcome to Frogger 2.0</h3>
+        <div class="md-story">
+          <p>
+            Help your hero to escape this bugged game for good! Collect 100
+            points to win. Remember not to hit the bugs or you will lose 1 life.
+            When you run out of lives, you lose. Simple as that. Good luck!
+          </p>
+          <h3 id="hero-heading">Choose your Hero</h3>
+          <div class="hero-selection">
+            <div class="hero-img">
+              <img src="images/char-cat-girl.png" alt="character-kitty" />
+              <button class="md-select" id="kitty">Select Kitty</button>
             </div>
+            <div class="hero-img">
+              <img src="images/char-pink-girl.png" alt="character-rose" />
+              <button class="md-select" id="rose">Select Rose</button>
+            </div>
+            <div class="hero-img">
+              <img src="images/char-horn-girl.png" alt="character-lilith" />
+              <button class="md-select" id="lilith">Select Lilith</button>
+            </div>
+            <div class="hero-img">
+              <img src="images/char-princess-girl.png" alt="character-daisy" />
+              <button class="md-select" id="daisy">Select Daisy</button>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
 
     <!-- Winning Modal -->
-    <div class="md-modal " id="winning-modal">
-        <div class="md-content">
-            <h3>Congratulations! You made it!</h3>
-            <div class="md-story" id="success-container">
-                <img src="images/Star.png" alt="star">
-                <img src="images/Star.png" alt="star">
-                <img src="images/Star.png" alt="star">
-                <p>Well done! You escaped the bugs and reached your destination safe and sound! Now, stay tuned for the next
-                    challenge. Yay!</p>
-            </div>
-            <button id="restartBtn">Give it another try?</button>
+    <div class="md-modal" id="winning-modal">
+      <div class="md-content">
+        <h3>Congratulations! You made it!</h3>
+        <div class="md-story" id="success-container">
+          <img src="images/Star.png" alt="star" />
+          <img src="images/Star.png" alt="star" />
+          <img src="images/Star.png" alt="star" />
+          <p>
+            Well done! You escaped the bugs and reached your destination safe
+            and sound! Now, stay tuned for the next challenge. Yay!
+          </p>
         </div>
+        <button id="restartBtn">Give it another try?</button>
+      </div>
+    </div>
+
+    <!-- Losing Modal -->
+    <div class="md-modal" id="losing-modal">
+      <div class="md-content">
+        <h3>Darn it! The bugs got you!</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, qui.</p>
+        <button id="restartBtn">Give it another try?</button>
+      </div>
     </div>
 
     <script src="js/resources.js"></script>
     <script src="js/app.js"></script>
     <script src="js/engine.js"></script>
-</body>
-
+  </body>
 </html>
